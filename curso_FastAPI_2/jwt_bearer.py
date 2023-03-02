@@ -6,5 +6,5 @@ class JWTBearer(HTTPBearer):
     async def __call__(self, request: Request):
         auth = await super().__call__(request)
         data = validate_token(auth.credentials)
-        if(data.get("email") != "test@test15.com"):
+        if(data.get("email") != "test15@test.com"):
             raise HTTPException(status_code= 403,detail= "Credenciales invalidas")
