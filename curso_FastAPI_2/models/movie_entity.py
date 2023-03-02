@@ -1,6 +1,6 @@
 from config.database import Base
 from sqlalchemy import Column, Integer, String, Float
-class Movie(Base):
+class MovieModel(Base):
 
     __tablename__  = "movies"
 
