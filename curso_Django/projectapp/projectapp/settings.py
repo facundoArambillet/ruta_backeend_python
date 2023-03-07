@@ -29,8 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+# THIRD_APPS = [
+#     'jazzmin',
+# ]
+
+LOCAL_APPS = [
+    'polls',
+]
+
+
+# INSTALLED_APPS = THIRD_APPS + DJANGO_APPS  + LOCAL_APPS
+INSTALLED_APPS =  DJANGO_APPS  + LOCAL_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,6 +91,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',     ASI SE CONECTA CON UNA BDD EN MYSQL
+#         'NAME': 'database_django',    
+#         'USER': 'root',
+#         'PASSWORD': '123456789',
+#         'HOST': '',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation
