@@ -5,8 +5,8 @@ class MovieModel(Base):
     __tablename__  = "movies"
 
     id = Column(Integer, primary_key= True, autoincrement= "auto")
-    title = Column(String)
-    overview = Column(String)
+    title = Column(String(50))
+    overview = Column(String(50))
     year = Column(Integer)
     rating = Column(Float)
-    category = Column(String)
+    category = Column(String(50))

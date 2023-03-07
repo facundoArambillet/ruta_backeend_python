@@ -8,7 +8,7 @@ from jwt_bearer import JWTBearer
 from middlewares.error_handler import ErrorHandler
 
 #IMPORTACION BDD
-from config.database import Session, engine, Base
+from config.database import Session, engine,engine_mysql, Base
 
 #IMPORTACION DE ROUTERS
 from routers.movie import movie_router
@@ -28,7 +28,8 @@ app.include_router(movie_router)
 app.include_router(user_router)
 
 #CONEXION CON LA BDD
-Base.metadata.create_all(bind=engine) 
+Base.metadata.create_all(bind= engine) #BDD SQLite
+Base.metadata.create_all(bind= engine_mysql) #BDD MYSQL
 
 @app.get("/", tags=['home'])
 def message():

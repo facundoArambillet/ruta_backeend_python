@@ -4,7 +4,7 @@ from fastapi import Depends, Path, Query, HTTPException, APIRouter
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from typing import List
-from config.database import Session, engine, Base
+from config.database import Session,Session_mysql, engine, Base
 from jwt_bearer import JWTBearer
 from models.movie_entity import MovieModel
 
@@ -73,7 +73,9 @@ def get_movies_by_category(category: str = Query(min_length=5)) -> Movie:
 @movie_router.post("/movies", tags=['movies'], response_model=dict)
 def create_movies(movie: Movie) -> dict:
     db = Session()
+    db_mysql = Session_mysql()
     new_movie = MovieService(db).create_movie(movie)
+    new_movie = MovieService(db_mysql).create_movie(movie)
     return new_movie
 
 
