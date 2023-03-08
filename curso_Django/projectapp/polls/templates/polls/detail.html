@@ -1,6 +1,11 @@
 <h1>{{question.text}}</h1>
-<ul>
-    {% for choice  in question.choice_set.all %}
-    <li>{{ choice.text }}</li>
-    {% endfor %}
-</ul>
+{% if question.choice_set.all %}
+    <ul>
+        {% for choice  in question.choice_set.all %}
+        <li>{{ choice.text }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No answers available </p>
+{% endif %}
+

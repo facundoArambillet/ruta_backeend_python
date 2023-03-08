@@ -4,7 +4,7 @@ from .models import Question
 # Create your views here.
 
 def index(request):
-    lates_question_list = Question.objects.all()  #El metodo filter trae todas las coincidencias el metodo get unicamente puede traer 1
+    lates_question_list = Question.objects.all() #El metodo filter trae todas las coincidencias el metodo get unicamente puede traer 1
     return render(request, "polls/index.html", {   #Render se usa para poder utilizar las views en los templates
         "lates_question_list": lates_question_list
     })
