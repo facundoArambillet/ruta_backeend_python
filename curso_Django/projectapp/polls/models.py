@@ -13,7 +13,7 @@ class Question(models.Model):
         return self.text
 
     def was_published_recently(self):
-        return self.date >= timezone.now() - datetime.timedelta(days=1)
+        return timezone.now() >= self.date >= timezone.now() - datetime.timedelta(days=1)
 
 class Choice(models.Model):
     # id este atributo ya Django lo crea automaticamente por lo que no hay que ponerlo

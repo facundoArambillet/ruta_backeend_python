@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from .models import Question, Choice
+from django.utils import timezone
 # Create your views here.
 
 
@@ -32,7 +33,8 @@ class IndexView(generic.ListView):
     context_object_name = "latest_question_list"
 
     def get_queryset(self):
-        return Question.objects.order_by("-date")[:5] #El - lo ordena de la mas reciente a la mas antigua , por default es alrevez
+        # return Question.objects.order_by("-date")[:5] #El - lo ordena de la mas reciente a la mas antigua , por default es alrevez
+        return Question.objects.filter(date__lte = timezone.now()).order_by("-date")[:5] #lte(less than or equal)
 
 class DetailView(generic.DetailView):
     model = Question
